@@ -14,6 +14,10 @@ A first ruleset for the Quickstart
       msg = "Hello " + obj;
       msg
     }
+    monkey = function(name) {
+      msg = "Hello" + name;
+      msg
+    }
   }
    
   rule hello_world {
@@ -24,6 +28,7 @@ A first ruleset for the Quickstart
   rule hello_monkey {
     select when echo monkey 
     send_directive("say", {"something": "Hello Monkey"})
+
   }
    
 }
