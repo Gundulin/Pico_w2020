@@ -6,7 +6,7 @@ A first ruleset for the Quickstart
 >>
     author "Phil Windley"
     logging on
-    shares hello
+    shares hello, monkey
   }
    
   global {
@@ -15,9 +15,12 @@ A first ruleset for the Quickstart
       msg
     }
     monkey = function(name) {
-      msg = "Hello" + name;
+      // msg = "Hello " + name.defaultsTo("Monkey").klog("the passed in name was:")
+      msg = (name != null) => "Hello " + name | "Hello Monkey";
       msg
+    
     }
+    
   }
    
   rule hello_world {
@@ -26,9 +29,8 @@ A first ruleset for the Quickstart
   }
   
   rule hello_monkey {
-    select when echo monkey 
+    select when echo monkey
     send_directive("say", {"something": "Hello Monkey"})
-
   }
    
 }
