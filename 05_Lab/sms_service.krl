@@ -29,8 +29,8 @@ sends an SMS to a person
     send_sms(event:attr(ent:phone),
              event:attr("2017482153"),
              event:attr("I'm testing my lab"),
-             event:attr("AC8453662a2cc758889aeb51289e48e343"),
-             event:attr("6311137882d7425bf7ad30c6c5230ffc"))
+             event:attr("-"),
+             event:attr("-"))
   }
   
   rule new_number_who_dis {
