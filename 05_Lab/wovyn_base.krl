@@ -66,7 +66,7 @@ ruleset wovyn_base {
         threshold = event:attr("threshold").klog("passed in new threshold: ")
       }
       always {
-        ent:temperature_threshold := threshold
+        ent:temperature_threshold := threshold.as("Number").klog("updated threshold: ")
       }
     }
     
