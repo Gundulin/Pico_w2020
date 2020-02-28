@@ -1,0 +1,3 @@
+ruleset manage_sensors {
+
+}
