@@ -10,7 +10,7 @@ ruleset wovyn_base {
     global {
         temperature_threshold = 60
         current_temp = function() {
-          return (ent:current_temp != null) => ent:current_temp | 7734
+          return (ent:current_temp != null) => ent:current_temp | 69.02
         }
     }
 
@@ -57,7 +57,17 @@ ruleset wovyn_base {
     
     rule threshold_notification {
       select when wovyn threshold_violation
-      send_directive("temperature_notification", {"notification": "high temp = bad!"})
+      // send_directive("temperature_notification", {"notification": "high temp = bad!"})
+      foreach Subscriptions:established("Tx_role", "manager") setting(subscription)
+        pre {
+          subs = subscription.klog("subs: ")
+        }
+        event:send({
+          "eci": subscription{"Tx"},
+          "eid": "threshold-violation",
+          "domain": "sensor",
+          "type": "threshold_violation"
+        })
     }
     
     rule update_threshold {
