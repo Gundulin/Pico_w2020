@@ -170,4 +170,14 @@ ruleset manage_sensors {
     }
     
   }
+  
+  rule sensor_threshold_violation {
+    select when sensor threshold_violation
+    fired {
+    raise sms_service event "new_message"
+      attributes {
+        "message": "threshold violation!"
+      }
+    }
+  }
 }
