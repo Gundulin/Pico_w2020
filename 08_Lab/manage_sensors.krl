@@ -47,11 +47,17 @@ ruleset manage_sensors {
     default_threshold = 69
     
     get_reports = function() {
-      end = ent:report_ID - 5
-      a = ent:reports.filter(function(x) {
-        b = x.as("Number")
-        b > end
-      })
+      a = {}
+      position = (ent:reports.length() - 6).as("String").klog("position: ")
+      a = a.put(position, ent:reports{position})
+      position = (ent:reports.length() - 5).as("String")
+      a = a.put(position, ent:reports.get(position))
+      position = (ent:reports.length() - 4).as("String")
+      a = a.put(position, ent:reports.get(position))
+      position = (ent:reports.length() - 3).as("String")
+      a = a.put(position, ent:reports.get(position))
+      position = (ent:reports.length() - 2).as("String")
+      a = a.put(position, ent:reports.get(position))
       return a
     }
   }
