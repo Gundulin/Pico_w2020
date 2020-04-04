@@ -1,0 +1,3 @@
+ruleset gossip_protocol {
+
+}
